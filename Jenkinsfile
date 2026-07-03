@@ -9,21 +9,27 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building Corporate Website...'
+                bat 'docker build -t corporate-website:v1 .'
             }
         }
 
-        stage('Test') {
+        stage('Remove Old Container') {
             steps {
-                echo 'Testing website...'
+                bat 'docker rm -f corporate-container || exit 0'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Docker Container') {
             steps {
-                echo 'Deployment Successful.'
+                bat 'docker run -d -p 8085:80 --name corporate-container corporate-website:v1'
+            }
+        }
+
+        stage('Deployment Complete') {
+            steps {
+                echo 'Website deployed successfully.'
             }
         }
     }
