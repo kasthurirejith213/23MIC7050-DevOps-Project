@@ -1,0 +1,356 @@
+/* ===========================
+   GENERAL
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:#333;
+    line-height:1.6;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#003366;
+
+    padding:15px 60px;
+
+}
+
+.logo h2{
+
+    color:white;
+
+}
+
+.nav-links{
+
+    list-style:none;
+
+    display:flex;
+
+}
+
+.nav-links li{
+
+    margin-left:20px;
+
+}
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+}
+
+.nav-links a:hover{
+
+    color:orange;
+
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    background:#0059b3;
+
+    color:white;
+
+}
+
+.hero h1{
+
+    font-size:50px;
+
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    font-size:20px;
+
+    margin-bottom:30px;
+
+}
+
+.btn{
+
+    background:orange;
+
+    color:white;
+
+    padding:12px 25px;
+
+    text-decoration:none;
+
+    border-radius:5px;
+
+    font-size:18px;
+
+}
+
+.btn:hover{
+
+    background:#ff8800;
+
+}
+
+/* ===========================
+   ABOUT
+=========================== */
+
+.about{
+
+    padding:60px;
+
+    text-align:center;
+
+    background:white;
+
+}
+
+.about h2{
+
+    color:#003366;
+
+    margin-bottom:20px;
+
+}
+
+/* ===========================
+   SERVICES
+=========================== */
+
+.services{
+
+    padding:60px;
+
+    background:#eef4fa;
+
+    text-align:center;
+
+}
+
+.services h2{
+
+    margin-bottom:30px;
+
+    color:#003366;
+
+}
+
+.service-container{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    flex-wrap:wrap;
+
+}
+
+.service-box{
+
+    width:300px;
+
+    background:white;
+
+    padding:20px;
+
+    margin:15px;
+
+    border-radius:10px;
+
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+
+}
+
+.service-box:hover{
+
+    transform:translateY(-5px);
+
+    transition:0.3s;
+
+}
+
+.service-box h3{
+
+    color:#0059b3;
+
+    margin-bottom:15px;
+
+}
+
+/* ===========================
+   STATISTICS
+=========================== */
+
+.stats{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    background:#003366;
+
+    color:white;
+
+    padding:60px;
+
+    flex-wrap:wrap;
+
+}
+
+.stat{
+
+    text-align:center;
+
+}
+
+.stat h2{
+
+    font-size:40px;
+
+}
+
+/* ===========================
+   WHY CHOOSE US
+=========================== */
+
+.choose{
+
+    padding:60px;
+
+    background:white;
+
+}
+
+.choose h2{
+
+    text-align:center;
+
+    color:#003366;
+
+    margin-bottom:25px;
+
+}
+
+.choose ul{
+
+    width:50%;
+
+    margin:auto;
+
+}
+
+.choose li{
+
+    margin:15px 0;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    background:#003366;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.navbar{
+
+    flex-direction:column;
+
+}
+
+.nav-links{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.nav-links li{
+
+    margin:10px 0;
+
+}
+
+.service-container{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.stats{
+
+    flex-direction:column;
+
+}
+
+.choose ul{
+
+    width:90%;
+
+}
+
+.hero h1{
+
+    font-size:35px;
+
+}
+
+.hero p{
+
+    font-size:18px;
+
+}
+
+}
