@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     stages {
@@ -15,15 +14,25 @@ pipeline {
                 bat 'docker build -t corporate-website:v1 .'
             }
         }
+
+        stage('Debug Kubernetes') {
+            steps {
+                bat 'kubectl version --client'
+                bat 'kubectl config view'
+                bat 'kubectl config current-context'
+                bat 'kubectl cluster-info'
+            }
+        }
+
         stage('Deploy to Kubernetes') {
-    steps {
-        bat '''
-        kubectl apply -f deployment.yaml --validate=false
-        kubectl apply -f service.yaml --validate=false
-        '''
-    }
-}
-             
+            steps {
+                bat '''
+                kubectl apply -f deployment.yaml --validate=false
+                kubectl apply -f service.yaml --validate=false
+                '''
+            }
+        }
+
         stage('Verify Deployment') {
             steps {
                 bat 'kubectl get pods'
@@ -33,10 +42,8 @@ pipeline {
 
         stage('Finished') {
             steps {
-                echo 'Corporate Website deployed successfully to Kubernetes'
+                echo 'Corporate Website deployed successfully.'
             }
         }
-
     }
-
 }
