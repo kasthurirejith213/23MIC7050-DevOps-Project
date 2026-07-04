@@ -1,11 +1,12 @@
 pipeline {
+
     agent any
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout Code') {
             steps {
-                echo 'Repository cloned successfully.'
+                checkout scm
             }
         }
 
@@ -15,22 +16,26 @@ pipeline {
             }
         }
 
-        stage('Remove Old Container') {
+        stage('Deploy to Kubernetes') {
             steps {
-                bat 'docker rm -f corporate-container || exit 0'
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Verify Deployment') {
             steps {
-                bat 'docker run -d -p 8085:80 --name corporate-container corporate-website:v1'
+                bat 'kubectl get pods'
+                bat 'kubectl get svc'
             }
         }
 
-        stage('Deployment Complete') {
+        stage('Finished') {
             steps {
-                echo 'Website deployed successfully.'
+                echo 'Corporate Website deployed successfully to Kubernetes'
             }
         }
+
     }
+
 }
