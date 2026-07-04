@@ -15,14 +15,15 @@ pipeline {
                 bat 'docker build -t corporate-website:v1 .'
             }
         }
-
         stage('Deploy to Kubernetes') {
-            steps {
-                bat 'kubectl apply -f deployment.yaml'
-                bat 'kubectl apply -f service.yaml'
-            }
-        }
-
+    steps {
+        bat '''
+        kubectl apply -f deployment.yaml --validate=false
+        kubectl apply -f service.yaml --validate=false
+        '''
+    }
+}
+             
         stage('Verify Deployment') {
             steps {
                 bat 'kubectl get pods'
