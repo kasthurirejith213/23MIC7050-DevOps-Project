@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        KUBECONFIG = 'C:\\Users\\kasth\\.kube\\config'
+    }
+
     stages {
 
         stage('Checkout Code') {
@@ -17,19 +21,16 @@ pipeline {
 
         stage('Debug Kubernetes') {
             steps {
-                bat 'kubectl version --client'
-                bat 'kubectl config view'
+                bat 'echo %KUBECONFIG%'
                 bat 'kubectl config current-context'
-                bat 'kubectl cluster-info'
+                bat 'kubectl get nodes'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat '''
-                kubectl apply -f deployment.yaml --validate=false
-                kubectl apply -f service.yaml --validate=false
-                '''
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
             }
         }
 
